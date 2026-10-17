@@ -5,7 +5,7 @@
   "scripts": {
     "setup": "npm --prefix web install",
     "dev": "npm --prefix web run dev",
-    "build": "npm --prefix web run build",
+    "build": "npm --prefix web ci && npm --prefix web run build",
     "preview": "npm --prefix web run preview",
     "check": "npm --prefix web exec -- astro check"
   }
