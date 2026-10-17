@@ -220,3 +220,7 @@ body {
 .post .shot { margin: 1.4em 0; }
 .post .shot img { display: block; margin: 0 auto; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 1px 3px rgb(0 0 0 / 0.08); }
 .post .shot-m img { max-width: 260px; }
+.post table { width: 100%; border-collapse: collapse; font-size: 0.95em; display: block; overflow-x: auto; }
+.post th, .post td { border: 1px solid var(--border); padding: 0.5em 0.75em; text-align: left; vertical-align: top; }
+.post th { background: var(--surface-2); font-weight: 600; }
+.post tr:nth-child(even) td { background: var(--surface); }

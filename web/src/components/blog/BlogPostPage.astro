@@ -4,8 +4,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import Button from '@/components/ui/Button.astro';
 import { SITE } from '@/config/site';
-import { blogPostSchema, breadcrumbSchema, faqSchema } from '@/lib/seo/schema';
-import { faqFromBody, formatDate, postPath, readingMinutes, translationsOf, wordCount, type Post } from '@/lib/blog/posts';
+import { blogPostSchema, breadcrumbSchema, faqSchema, howToSchema } from '@/lib/seo/schema';
+import { faqFromBody, formatDate, postPath, readingMinutes, stepsFromBody, translationsOf, wordCount, type Post } from '@/lib/blog/posts';
 import { TOOLS } from '@/lib/tools/registry';
 
 interface Props {
@@ -23,10 +23,12 @@ const others = await translationsOf(post);
 const tool = data.tool ? TOOLS.find((x) => x.slug === data.tool && x.status === 'live') : undefined;
 const toc = headings.filter((h) => h.depth === 2);
 const faq = faqFromBody(body);
+const steps = stepsFromBody(body);
 
 const schemas = [
   blogPostSchema({ path, title: data.title, description: data.description, lang, date: data.date, updated: data.updated, author: data.author, keywords: data.keywords, wordCount: wordCount(body) }),
   breadcrumbSchema([{ name: 'Home', path: '/' }, { name: t.title, path: t.path }, { name: data.title, path }]),
+  ...(steps.length >= 2 ? [howToSchema({ name: data.title, description: data.description, lang, path, steps })] : []),
   ...(faq.length >= 2 ? [faqSchema(faq)] : []),
 ];
 ---

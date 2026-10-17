@@ -154,3 +154,15 @@ export function blogIndexSchema(o: { path: string; name: string; description: st
     blogPost: o.posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: absUrl(p.path) })),
   };
 }
+
+export function howToSchema(o: { name: string; description: string; lang: string; path: string; steps: { name: string; text: string }[] }): Json {
+  return {
+    '@context': CTX,
+    '@type': 'HowTo',
+    name: o.name,
+    description: o.description,
+    inLanguage: o.lang,
+    mainEntityOfPage: absUrl(o.path),
+    step: o.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text })),
+  };
+}

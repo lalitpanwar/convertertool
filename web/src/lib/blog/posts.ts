@@ -45,3 +45,17 @@ export function faqFromBody(body: string): { q: string; a: string }[] {
 }
 
 export const wordCount = (body: string) => clean(body).split(/\s+/).filter(Boolean).length;
+
+/** "### Step 1: Title" (or "### स्टेप 1: ...") headings with the first paragraph under them, for HowTo schema */
+export function stepsFromBody(body: string): { name: string; text: string }[] {
+  const lines = body.split(/\r?\n/);
+  const out: { name: string; text: string }[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = /^###\s+(?:Step|स्टेप)\s*\d+\s*[:：]\s*(.+)$/.exec(lines[i].trim());
+    if (!m) continue;
+    let j = i + 1;
+    while (j < lines.length && (lines[j].trim() === '' || lines[j].trim().startsWith('<figure'))) j++;
+    out.push({ name: clean(m[1]), text: clean(lines[j] ?? '') });
+  }
+  return out;
+}
