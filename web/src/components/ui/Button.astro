@@ -1,0 +1,18 @@
+---
+import { buttonClass, type ButtonStyle } from '@/lib/ui/button';
+
+interface Props extends ButtonStyle {
+  /** renders an <a> when set */
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+}
+const { variant, size, full, href, type = 'button', class: extra } = Astro.props;
+const cls = buttonClass({ variant, size, full });
+---
+
+{href ? (
+  <a href={href} class:list={[cls, extra]}><slot /></a>
+) : (
+  <button type={type} class:list={[cls, extra]}><slot /></button>
+)}

@@ -1,0 +1,26 @@
+---
+/**
+ * Renders the interactive tool for a given ToolDef.island key.
+ * Astro needs STATIC imports for hydrated components, so add one import and
+ * one line below for every new tool (see docs/11-dev-guide.md).
+ */
+import type { IslandKey } from '@/lib/tools/types';
+import JpgToPdfTool from './JpgToPdfTool';
+import MergePdfTool from './MergePdfTool';
+import PdfToJpgTool from './PdfToJpgTool';
+import TextToPdfTool from './TextToPdfTool';
+
+interface Props {
+  island: IslandKey;
+  /** what the tool UI calls the files (see ToolDef.fileNoun) */
+  noun?: string;
+  /** key for the saved draft in the browser (the tool's slug) */
+  draftKey?: string;
+}
+const { island, noun, draftKey } = Astro.props;
+---
+
+{island === 'JpgToPdf' && <JpgToPdfTool client:visible noun={noun} draftKey={draftKey} />}
+{island === 'MergePdf' && <MergePdfTool client:visible draftKey={draftKey} />}
+{island === 'PdfToJpg' && <PdfToJpgTool client:visible draftKey={draftKey} />}
+{island === 'TextToPdf' && <TextToPdfTool client:visible draftKey={draftKey} />}

@@ -1,0 +1,12 @@
+{
+  "name": "pdf-tools-root",
+  "private": true,
+  "description": "Root helper: forwards commands to ./web (the Astro site). Run `npm run setup` once.",
+  "scripts": {
+    "setup": "npm --prefix web install",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "preview": "npm --prefix web run preview",
+    "check": "npm --prefix web exec -- astro check"
+  }
+}

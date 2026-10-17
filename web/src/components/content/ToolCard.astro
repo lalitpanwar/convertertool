@@ -1,0 +1,35 @@
+---
+import type { ToolDef } from '@/lib/tools/types';
+import { TOOL_ICONS, fallbackIcon } from '@/lib/tools/icons';
+interface Props {
+  tool: ToolDef;
+}
+const { tool } = Astro.props;
+const live = tool.status === 'live';
+const icon = TOOL_ICONS[tool.slug] ?? fallbackIcon;
+---
+
+{live ? (
+  <a
+    href={`/${tool.slug}/`}
+    class="group flex h-full flex-col gap-3 rounded-card border border-border bg-surface p-5 transition-shadow hover:border-brand hover:shadow-md"
+  >
+    <span class="flex h-12 w-12 items-center justify-center rounded-card bg-brand-soft text-brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icon} /></svg>
+    </span>
+    <span>
+      <span class="block font-semibold group-hover:text-brand">{tool.name}</span>
+      <span class="mt-1 block text-sm text-muted">{tool.h1}</span>
+    </span>
+  </a>
+) : (
+  <div class="flex h-full flex-col gap-3 rounded-card border border-dashed border-border p-5 opacity-70">
+    <span class="flex h-12 w-12 items-center justify-center rounded-card bg-surface-2 text-muted">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icon} /></svg>
+    </span>
+    <span>
+      <span class="block font-semibold">{tool.name}</span>
+      <span class="mt-1 block text-sm text-muted">Coming soon</span>
+    </span>
+  </div>
+)}

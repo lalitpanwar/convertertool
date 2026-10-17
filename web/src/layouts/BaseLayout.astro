@@ -1,0 +1,46 @@
+---
+import '@/styles/global.css';
+import Seo from '@/components/seo/Seo.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { organizationSchema, websiteSchema } from '@/lib/seo/schema';
+import { SITE } from '@/config/site';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs, { type Crumb } from '@/components/layout/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  path: string;
+  noindex?: boolean;
+  /** shown at the bottom as "You are here"; defaults to just Home */
+  crumbs?: Crumb[];
+}
+const { title, description, path, noindex, crumbs = [{ name: 'Home' }] } = Astro.props;
+---
+
+<!doctype html>
+<html lang={SITE.defaultLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Seo title={title} description={description} path={path} noindex={noindex} />
+    <JsonLd data={[organizationSchema(), websiteSchema()]} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded-ctl focus:bg-surface focus:px-3 focus:py-2">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Breadcrumbs crumbs={crumbs} />
+    <script is:inline>
+      // iOS Safari only shows :active (pressed) styles when a touch listener exists
+      document.addEventListener('touchstart', function () {}, { passive: true });
+    </script>
+    <Footer />
+  </body>
+</html>

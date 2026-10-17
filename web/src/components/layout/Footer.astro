@@ -1,0 +1,18 @@
+---
+import { SITE } from '@/config/site';
+import { liveTools } from '@/lib/tools/registry';
+const tools = liveTools();
+---
+
+<footer class="mt-16 border-t border-border bg-surface">
+  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-muted">
+    <p class="font-medium text-text">{SITE.name}</p>
+    <p class="mt-1">{SITE.privacyLine}</p>
+    <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-1">
+      {tools.map((t) => (
+        <li><a class="inline-flex min-h-8 items-center text-link underline-offset-4 hover:underline" href={`/${t.slug}/`}>{t.name}</a></li>
+      ))}
+    </ul>
+    <p class="mt-6 text-xs">© {new Date().getFullYear()} {SITE.name}</p>
+  </div>
+</footer>

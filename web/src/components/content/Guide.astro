@@ -1,0 +1,15 @@
+---
+interface Props {
+  sections: { heading: string; body: string }[];
+}
+const { sections } = Astro.props;
+---
+
+<section class="prose-lite">
+  {sections.map((s) => (
+    <>
+      <h2>{s.heading}</h2>
+      <p class="text-muted">{s.body}</p>
+    </>
+  ))}
+</section>

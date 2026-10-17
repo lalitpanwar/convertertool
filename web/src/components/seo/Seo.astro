@@ -1,0 +1,48 @@
+---
+import { SITE, absUrl } from '@/config/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** path starting with "/", used for canonical */
+  path: string;
+  noindex?: boolean;
+  /** share image path in /public (defaults to SITE.ogImage) */
+  image?: string;
+  imageAlt?: string;
+  /** 'website' (default) or 'article' */
+  type?: string;
+}
+const { title, description = SITE.defaultDescription, path, noindex = false, image = SITE.ogImage, imageAlt = SITE.ogImageAlt, type = 'website' } = Astro.props;
+const canonical = absUrl(path);
+const img = absUrl(image);
+const index = SITE.robots.allowIndexing && !noindex;
+const { google, bing } = SITE.verification;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={index ? 'index,follow,max-image-preview:large,max-snippet:-1' : 'noindex,follow'} />
+<meta name="theme-color" content={SITE.themeColor} />
+<meta name="application-name" content={SITE.name} />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="alternate" hreflang={SITE.defaultLocale} href={canonical} />
+<link rel="alternate" hreflang="x-default" href={canonical} />
+{google && <meta name="google-site-verification" content={google} />}
+{bing && <meta name="msvalidate.01" content={bing} />}
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.ogLocale[SITE.defaultLocale]} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={img} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={img} />
+{SITE.twitterHandle && <meta name="twitter:site" content={SITE.twitterHandle} />}

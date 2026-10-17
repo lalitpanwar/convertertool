@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens (LIGHT ONLY, no dark mode). Change colors ONLY here.
+ * Style reference: clean "utility site" look (white cards on light grey page,
+ * red primary buttons, dark text). Brand red = #d00000 (owner decision).
+ *  brand       = logo, primary buttons, links, selected borders, progress
+ *  on-brand    = text on brand-colored buttons (white, contrast 5.9:1)
+ */
+:root {
+  --bg: #f4f4f6;
+  --surface: #ffffff;
+  --surface-2: #ececf0;
+  --border: #e2e2e8;
+  --text: #33333b;
+  --muted: #5d5f68;
+
+  --brand: #d00000;
+  --brand-hover: #b00000;
+  --brand-soft: #fdeded;
+  --brand-active: #8f0000; /* pressed state of red buttons */
+  --on-brand: #ffffff;
+  /* neutral gray for secondary controls (view toggle, order badge, hover states) */
+  --neutral: #5b5e68;
+  --neutral-hover: #484b54;
+  --on-neutral: #ffffff;
+  --link: #d00000;
+  --focus: #d00000;
+
+  --success: #1e7a46; /* green check / success states */
+  --success-soft: #e6f4ec;
+
+  --danger: #a4181b;
+  --danger-soft: #fdeded;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-active: var(--brand-active);
+  --color-on-brand: var(--on-brand);
+  --color-neutral: var(--neutral);
+  --color-neutral-hover: var(--neutral-hover);
+  --color-on-neutral: var(--on-neutral);
+  --color-link: var(--link);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --radius-ctl: 4px; /* buttons, inputs, tiles, badges */
+  --radius-card: 6px; /* cards, panels */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+}
+
+/* Tailwind v4 resets buttons to the arrow cursor. Clickable things get the hand;
+   utility classes (e.g. cursor-grab on drag handles) still win because they live in a later layer. */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  a[href],
+  summary,
+  select:not(:disabled),
+  label[for],
+  input[type='radio']:not(:disabled),
+  input[type='checkbox']:not(:disabled) {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  color-scheme: light;
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  line-height: 1.6;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Long-form copy blocks (guides, FAQ answers) */
+.prose-lite p {
+  margin-block: 0.75rem;
+}
+.prose-lite h2 {
+  font-size: 1.35rem;
+  font-weight: 650;
+  margin-top: 2rem;
+}
+.prose-lite h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+}
+.prose-lite ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-block: 0.75rem;
+}
+
+/* Highlight for cards that were just added or moved: GREEN, so red can mean "problem" only */
+@keyframes flash-card {
+  0%,
+  100% {
+    background-color: var(--success-soft);
+  }
+  50% {
+    background-color: var(--surface-2);
+  }
+}
+.flash-card {
+  outline: 2px solid var(--success);
+  animation: flash-card 0.9s ease-in-out 3;
+}
+
+@keyframes check-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  70% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.check-pop {
+  animation: check-pop 0.4s ease-out;
+}
+
+/* Attention ripple for the main call to action (Download). Two rings, endless.
+   Uses pseudo-elements so the button keeps its own shadow. */
+@keyframes ripple-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 22px color-mix(in srgb, var(--brand) 0%, transparent);
+  }
+}
+.ripple-pulse {
+  position: relative;
+}
+.ripple-pulse::before,
+.ripple-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: ripple-ring 1.8s ease-out infinite;
+}
+.ripple-pulse::after {
+  animation-delay: 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* The text editor of "Text to PDF". Looks like the PDF: heading sizes match the PDF engine (HEADING_SCALE). */
+.rich {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.rich:empty::before,
+.rich.is-empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+  pointer-events: none;
+  position: absolute;
+}
+.rich p,
+.rich div { margin: 0; min-height: 1em; }
+.rich h1 { font-size: 1.9em; font-weight: 700; line-height: 1.3; margin: 0.7em 0 0.25em; }
+.rich h2 { font-size: 1.55em; font-weight: 700; line-height: 1.3; margin: 0.7em 0 0.25em; }
+.rich h3 { font-size: 1.3em; font-weight: 700; line-height: 1.3; margin: 0.7em 0 0.25em; }
+.rich ul { list-style: disc; padding-left: 1.5em; margin: 0; }
+.rich ol { list-style: decimal; padding-left: 1.7em; margin: 0; }
+.rich blockquote { margin: 0; padding-left: 0.9em; border-left: 3px solid var(--border); color: var(--muted); }
+.rich pre { margin: 0; padding: 0.4em 0.6em; background: var(--surface-2); font-family: ui-monospace, Consolas, monospace; font-size: 0.9em; white-space: pre-wrap; border-radius: 4px; }
+.rich code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; background: var(--surface-2); padding: 0 0.2em; border-radius: 3px; }
+.rich hr { border: 0; border-top: 1px solid var(--border); margin: 0.6em 0; }
+.rich > :first-child { margin-top: 0; }

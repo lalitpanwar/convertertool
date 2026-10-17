@@ -1,0 +1,12 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro';
+import { liveTools } from '@/lib/tools/registry';
+
+export function getStaticPaths() {
+  return liveTools().map((tool) => ({ params: { slug: tool.slug }, props: { tool } }));
+}
+
+const { tool } = Astro.props;
+---
+
+<ToolLayout tool={tool} />

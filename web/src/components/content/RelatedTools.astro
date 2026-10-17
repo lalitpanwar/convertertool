@@ -1,0 +1,17 @@
+---
+import type { ToolDef } from '@/lib/tools/types';
+import ToolCard from './ToolCard.astro';
+interface Props {
+  tools: ToolDef[];
+}
+const { tools } = Astro.props;
+---
+
+{tools.length > 0 && (
+  <section aria-labelledby="related-heading">
+    <h2 id="related-heading" class="text-xl font-semibold">More PDF tools</h2>
+    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+      {tools.map((t) => <ToolCard tool={t} />)}
+    </div>
+  </section>
+)}

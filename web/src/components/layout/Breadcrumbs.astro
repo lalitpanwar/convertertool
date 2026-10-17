@@ -1,0 +1,27 @@
+---
+export interface Crumb {
+  name: string;
+  /** omit for the current page (last item) */
+  href?: string;
+}
+interface Props {
+  crumbs: Crumb[];
+}
+const { crumbs } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="mt-12 px-4 sm:px-6">
+  <ol class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-border pt-5 text-sm text-muted">
+    <li class="font-medium text-text">You are here:</li>
+    {crumbs.map((c, i) => (
+      <li class="flex items-center gap-2">
+        {i > 0 && <span aria-hidden="true">/</span>}
+        {c.href ? (
+          <a href={c.href} class="text-link underline-offset-4 hover:underline">{c.name}</a>
+        ) : (
+          <span aria-current="page" class="font-medium text-text">{c.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

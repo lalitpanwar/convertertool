@@ -1,0 +1,18 @@
+---
+interface Props {
+  steps: string[];
+}
+const { steps } = Astro.props;
+---
+
+<section aria-labelledby="how-heading">
+  <h2 id="how-heading" class="text-xl font-semibold">How it works</h2>
+  <ol class="mt-4 grid gap-3 sm:grid-cols-3">
+    {steps.map((s, i) => (
+      <li class="flex gap-3 rounded-card border border-border bg-surface p-4">
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-ctl bg-brand-soft text-sm font-semibold">{i + 1}</span>
+        <span class="text-sm">{s}</span>
+      </li>
+    ))}
+  </ol>
+</section>

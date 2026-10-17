@@ -1,0 +1,19 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { SITE } from '@/config/site';
+---
+
+<header class="sticky top-0 z-10 border-b border-border bg-surface">
+  <div class="flex h-16 items-center justify-between px-4 sm:px-6">
+    <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-brand" aria-label={`${SITE.name} home`}>
+      <!-- placeholder logo mark: replace with real logo -->
+      <span class="flex h-8 w-8 items-center justify-center rounded-ctl bg-brand text-on-brand" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z M14 3v6h6" /></svg>
+      </span>
+      {SITE.name}
+    </a>
+    <nav aria-label="Main">
+      <Button href="/#tools" variant="ghost">All PDF tools</Button>
+    </nav>
+  </div>
+</header>

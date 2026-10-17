@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ToolCard from '@/components/content/ToolCard.astro';
+import { TOOLS } from '@/lib/tools/registry';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { liveTools } from '@/lib/tools/registry';
+import { toolListSchema, webPageSchema } from '@/lib/seo/schema';
+import { SITE } from '@/config/site';
+
+const title = `${SITE.name}: Free PDF Tools, Fast and Private`;
+const description = SITE.defaultDescription;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/"
+>
+  <JsonLd slot="head" data={[webPageSchema({ path: '/', name: title, description, type: 'CollectionPage' }), toolListSchema(liveTools())]} />
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:py-16">
+    <div class="mx-auto max-w-2xl text-center">
+      <h1 class="text-3xl font-bold leading-tight sm:text-5xl">Fix your PDF problem in seconds</h1>
+      <p class="mt-4 text-lg text-muted">{SITE.tagline} {SITE.privacyLine}</p>
+    </div>
+
+    <section id="tools" class="mt-10 sm:mt-14" aria-label="PDF tools">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {TOOLS.map((t) => <ToolCard tool={t} />)}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
