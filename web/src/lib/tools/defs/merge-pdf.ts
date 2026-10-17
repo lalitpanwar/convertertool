@@ -10,22 +10,22 @@ export const mergePdf: ToolDef = {
   title: 'Merge PDF: Combine PDF Files into One, Free',
   description:
     'Combine two or more PDFs into a single file. Reorder them, merge in seconds, no signup, and files never leave your device.',
-  h1: 'Combine PDF files into one',
+  h1: 'Merge PDF',
   intro:
-    'Add your PDFs, put them in the right order and download one merged file. Everything happens in your browser, so nothing is uploaded.',
+    'Combine PDF files into one document. Add your PDFs, see a preview of each, put them in the right order and download a single file. Everything happens in your browser, so nothing is uploaded.',
   steps: [
     'Choose two or more PDF files.',
-    'Use the arrows to set the order.',
-    'Tap Merge PDFs and download.',
+    'Check the previews and drag to set the order.',
+    'Tap Merge PDF and download.',
   ],
   faqs: [
     {
       q: 'How do I combine two PDF files into one?',
-      a: 'Select both PDFs on this page, check the order, then tap Merge PDFs. The combined file downloads right away.',
+      a: 'Select both PDFs on this page, check the order, then tap Merge PDF. The combined file downloads right away.',
     },
     {
       q: 'Can I change the order of the files?',
-      a: 'Yes. Use the up and down arrows next to each file. The final PDF follows the same order from top to bottom.',
+      a: 'Yes. Drag a PDF to a new place (on a phone, press and hold it first), or tap its number and pick a position. The final PDF follows the same order from first to last.',
     },
     {
       q: 'Can I merge PDFs on my phone?',

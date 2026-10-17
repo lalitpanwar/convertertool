@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { buttonClass } from '@/lib/ui/button';
-import type { Item } from './FileList';
+import type { Item } from './item';
 import MoveDialog from './MoveDialog';
 import { formatBytes } from '@/lib/utils';
 import { RotateIcon } from './tile-icons';
@@ -21,8 +21,10 @@ interface Props {
   look: (item: Item) => PageLook;
   onReorder: (from: number, to: number) => void;
   onRemove: (id: string) => void;
-  /** rotate 90 degrees clockwise */
-  onRotate: (id: string) => void;
+  /** rotate 90 degrees clockwise (omit for files that cannot be rotated, like PDFs) */
+  onRotate?: (id: string) => void;
+  /** what the cards are, for screen readers: 'images' (default) or 'PDFs' */
+  noun?: string;
   /** thumbnails (grid) or one row per image (list) */
   view: ViewMode;
   /** cards to highlight for a moment: just added, or just moved */
@@ -93,7 +95,7 @@ function unlockTouchScroll() {
  * order number in the top-left corner updates live and the list auto-scrolls
  * near its edges. Keyboard: focus the grip and press arrow keys.
  */
-export default function PageGrid({ items, look, onReorder, onRemove, onRotate, view, flash, bad, disabled }: Props) {
+export default function PageGrid({ items, look, onReorder, onRemove, onRotate, noun = 'images', view, flash, bad, disabled }: Props) {
   const [drag, setDrag] = useState<DragState | null>(null);
   /** index of the card whose "Move page" popup is open */
   const [moving, setMoving] = useState<number | null>(null);
@@ -319,7 +321,8 @@ export default function PageGrid({ items, look, onReorder, onRemove, onRotate, v
     </button>
   );
 
-  const rotateButton = (it: Item) => (
+  const rotateButton = (it: Item) =>
+    !onRotate ? null : (
     <button
       type="button"
       disabled={disabled}
@@ -352,7 +355,7 @@ export default function PageGrid({ items, look, onReorder, onRemove, onRotate, v
             ? 'grid grid-cols-[minmax(0,1fr)] gap-2'
             : 'grid grid-cols-2 items-start gap-3 sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-4'
         }
-        aria-label="Your images in page order. Drag to reorder."
+        aria-label={`Your ${noun} in order. Drag to reorder.`}
         data-view={view}
       >
         {items.map((it, i) => {
@@ -410,6 +413,7 @@ export default function PageGrid({ items, look, onReorder, onRemove, onRotate, v
                     {it.file.name}
                   </p>
                   <p class="text-xs text-muted">
+                    {it.pages ? `${it.pages} ${it.pages === 1 ? 'page' : 'pages'} · ` : ''}
                     {formatBytes(it.file.size)}
                     {it.preview ? '' : ' · adding…'}
                     {problem && <span class="ml-1.5 rounded-ctl bg-danger px-1.5 py-0.5 text-[10px] font-bold uppercase text-white">Can't read</span>}
@@ -453,8 +457,9 @@ export default function PageGrid({ items, look, onReorder, onRemove, onRotate, v
               </div>
 
               <div class="mt-2 flex items-center gap-1">
-                <span class="min-w-0 flex-1 truncate px-1 text-xs" title={it.file.name}>
-                  {it.file.name}
+                <span class="min-w-0 flex-1 px-1 text-xs" title={it.file.name}>
+                  <span class="block truncate">{it.file.name}</span>
+                  {it.pages && <span class="block text-[11px] text-muted">{it.pages} {it.pages === 1 ? 'page' : 'pages'}</span>}
                 </span>
                 {rotateButton(it)}
               </div>

@@ -69,6 +69,13 @@ Last updated: 17 Oct 2026
 7. [ ] Lighthouse CI, Cloudflare Pages deploy
 8. [ ] Wave 2: Word to PDF, PDF to Word (server, docs/04)
 
+## Merge PDF redesign (done)
+
+- Same UX as JPG to PDF: first-page preview of every PDF (pdf.js, drawn one at a time), page count per file and in total, Thumbnails/List toggle (phones start in List), A to Z / Z to A, Remove all, drag (long-press on touch) or tap the number to move, duplicate popup, "New"/"Moved" highlights, password/unreadable PDFs marked red and blocking Merge.
+- H1 is "Merge PDF"; intro starts with "Combine PDF files into one document". Button: "Merge PDF" (right panel on desktop, sticky on phones).
+- No drag-handle icon anywhere. `FileList.tsx` was deleted; the shared `Item` type is in `components/tool/item.ts`. `PageGrid` takes optional `onRotate` (PDFs cannot be rotated) and `noun`.
+- Verified at 390px and 1366px: 3 PDFs (8 pages) merge into an 8-page file, no horizontal overflow, error for a locked PDF.
+
 ## Text to PDF: rich-text editor (done)
 
 - `RichEditor.tsx` (contenteditable, plain-text paste, live font/size/line spacing, placeholder) + `RichToolbar` (Bold, Italic, Underline, Strike, Paragraph style H1-H3/Quote, bullet/numbered lists, align left/center/right/justify, clear formatting). Formatting shows in the editor at once; Preview is optional. Editor stays mounted (hidden) on the Preview tab.

@@ -8,7 +8,7 @@ import PageGrid, { type PageLook, type ViewMode } from './PageGrid';
 import ViewToggle from './ViewToggle';
 import Toast from './Toast';
 import DuplicateDialog from './DuplicateDialog';
-import type { Item } from './FileList';
+import type { Item } from './item';
 import { ArrowCircleIcon, RotateIcon, GridIcon, ListIcon } from './tile-icons';
 import BusyDialog from './BusyDialog';
 import ResultCard from './ResultCard';
