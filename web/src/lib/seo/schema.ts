@@ -112,3 +112,45 @@ export function toolListSchema(tools: ToolDef[]): Json {
     itemListElement: tools.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.name, url: absUrl(`/${t.slug}`) })),
   };
 }
+
+export function blogPostSchema(o: { path: string; title: string; description: string; lang: string; date: Date; updated?: Date; author: string; keywords: string[]; wordCount: number }): Json {
+  return {
+    '@context': CTX,
+    '@type': 'BlogPosting',
+    '@id': absUrl(o.path) + '#post',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': absUrl(o.path) },
+    headline: o.title,
+    description: o.description,
+    inLanguage: o.lang,
+    datePublished: o.date.toISOString(),
+    dateModified: (o.updated ?? o.date).toISOString(),
+    author: { '@type': 'Person', name: o.author },
+    publisher: { '@id': organizationId },
+    image: [absUrl(SITE.ogImage)],
+    wordCount: o.wordCount,
+    isAccessibleForFree: true,
+    ...(o.keywords.length ? { keywords: o.keywords.join(', ') } : {}),
+  };
+}
+
+export function faqSchema(items: { q: string; a: string }[]): Json {
+  return {
+    '@context': CTX,
+    '@type': 'FAQPage',
+    mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
+}
+
+export function blogIndexSchema(o: { path: string; name: string; description: string; lang: string; posts: { title: string; path: string }[] }): Json {
+  return {
+    '@context': CTX,
+    '@type': 'Blog',
+    '@id': absUrl(o.path) + '#blog',
+    url: absUrl(o.path),
+    name: o.name,
+    description: o.description,
+    inLanguage: o.lang,
+    publisher: { '@id': organizationId },
+    blogPost: o.posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: absUrl(p.path) })),
+  };
+}

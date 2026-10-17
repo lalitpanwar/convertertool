@@ -13,20 +13,25 @@ interface Props {
   description?: string;
   path: string;
   noindex?: boolean;
+  lang?: string;
+  type?: string;
+  alternates?: { lang: string; path: string }[];
+  article?: { published: Date; modified?: Date; author: string; tags?: string[] };
+  feed?: { title: string; path: string };
   /** shown at the bottom as "You are here"; defaults to just Home */
   crumbs?: Crumb[];
 }
-const { title, description, path, noindex, crumbs = [{ name: 'Home' }] } = Astro.props;
+const { title, description, path, noindex, lang = SITE.defaultLocale, type, alternates, article, feed, crumbs = [{ name: 'Home' }] } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={SITE.defaultLocale}>
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <Seo title={title} description={description} path={path} noindex={noindex} />
+    <Seo title={title} description={description} path={path} noindex={noindex} lang={lang} type={type} alternates={alternates} article={article} feed={feed} />
     <JsonLd data={[organizationSchema(), websiteSchema()]} />
     <slot name="head" />
   </head>

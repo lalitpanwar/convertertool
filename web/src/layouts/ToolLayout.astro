@@ -9,6 +9,7 @@ import ToolIsland from '@/components/tool/ToolIsland.astro';
 import { relatedTools } from '@/lib/tools/registry';
 import { SITE } from '@/config/site';
 import { toolSchemas } from '@/lib/seo/schema';
+import { postPath, postsFor } from '@/lib/blog/posts';
 import type { ToolDef } from '@/lib/tools/types';
 
 interface Props {
@@ -18,6 +19,8 @@ const { tool } = Astro.props;
 const path = `/${tool.slug}`;
 
 const schema = toolSchemas(tool);
+// blog posts about this tool (internal links for readers and for search engines)
+const guides = [...(await postsFor('en')), ...(await postsFor('hi'))].filter((p) => p.data.tool === tool.slug);
 ---
 
 <BaseLayout
@@ -43,6 +46,21 @@ const schema = toolSchemas(tool);
         {tool.guide && <Guide sections={tool.guide} />}
         <Faq faqs={tool.faqs} />
       </div>
+      {guides.length > 0 && (
+        <section aria-label="Guides">
+          <h2 class="text-2xl font-bold">Guides</h2>
+          <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+            {guides.map((g) => (
+              <li>
+                <a href={postPath(g)} hreflang={g.data.lang} lang={g.data.lang} class="block rounded-card border border-border bg-surface p-4 hover:border-brand">
+                  <span class="font-semibold">{g.data.title}</span>
+                  <span class="mt-1 block text-sm text-muted">{g.data.description}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <RelatedTools tools={relatedTools(tool)} />
     </div>
   </div>

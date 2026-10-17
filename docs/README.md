@@ -36,6 +36,7 @@ Baaki files (01-09) background/planning hain. Agar 10 ya 11 se conflict ho to **
 | Colors / buttons / layout ke rules? | 11 section 3 aur AGENTS.md hard rules |
 | Site name, domain, SEO defaults, robots kahan badlein? | `web/src/config/site.ts` (11 + 12 "SEO foundation") |
 | Schema (JSON-LD) kahan banta hai? | `web/src/lib/seo/schema.ts` |
+| Nayi blog post kaise daalein? | 11 "Blog" section, files `web/src/content/blog/` |
 | Kaunsa tool pehle? | 09 aur 10 section 7 |
 | Speed budget? | 10 section 4 |
 | Abhi kya baaki hai? | 12 "Next" aur "Blocked" |
@@ -55,6 +56,7 @@ Baaki files (01-09) background/planning hain. Agar 10 ya 11 se conflict ho to **
 | `lib/tools/` | `registry.ts`, `types.ts`, `defs/*` (tool content: title, H1, steps, FAQ, guide) |
 | `lib/pdf/` | PDF engines (lazy): `text-to-pdf`, `jpg-to-pdf`, `merge`, `pdf-to-jpg`, `fonts`, `rich-html`, configs |
 | `lib/seo/` | Schema builders |
+| `content/blog/`, `lib/blog/`, `components/blog/`, `pages/blog`, `pages/hi/blog` | Blog (English + Hindi posts, RSS) |
 | `lib/storage/` | Draft save/restore (IndexedDB) |
 | `styles/global.css` | Design tokens (colors only here) |
 

@@ -9,9 +9,9 @@ export const SITE = {
   tagline: 'Free PDF tools. Fast, private, no signup.',
   privacyLine: 'Your files never leave your device.',
   defaultLocale: 'en',
-  locales: ['en'] as const, // 'hi' is added in the SEO-copy phase (docs/10, docs/11)
+  locales: ['en', 'hi'] as const, // blog posts exist in both; tool pages are English for now (docs/10, docs/11)
   /** og:locale per language */
-  ogLocale: { en: 'en_IN' } as Record<string, string>,
+  ogLocale: { en: 'en_IN', hi: 'hi_IN' } as Record<string, string>,
   /** browser UI colour on phones (the brand red) */
   themeColor: '#d00000',
   /** default share image (1200x630) in /public */
@@ -20,6 +20,11 @@ export const SITE = {
   /** used when a page gives no description of its own */
   defaultDescription:
     'Convert photos to PDF, turn PDF pages into JPG, merge PDFs and create PDFs from text. Free, no signup, and your files never leave your device.',
+  /** blog: one set of texts per language (posts live in src/content/blog/<lang>/) */
+  blog: {
+    en: { path: '/blog/', title: 'Blog', heading: 'PDF guides and tips', description: 'Simple step-by-step guides for everyday PDF problems: photos to PDF, merging files, making files smaller.' },
+    hi: { path: '/hi/blog/', title: 'ब्लॉग', heading: 'PDF गाइड और टिप्स', description: 'रोज़ की PDF समस्याओं के आसान स्टेप-बाय-स्टेप गाइड: फोटो से PDF, फाइल जोड़ना, फाइल छोटी करना।' },
+  } as Record<string, { path: string; title: string; heading: string; description: string }>,
   /** schema.org Organization */
   organization: {
     legalName: 'PDFSaathi',

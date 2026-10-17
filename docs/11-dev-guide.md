@@ -106,3 +106,12 @@ Not built yet. Plan: route `pages/[slug]/[useCase].astro` driven by a `useCases`
 - Extra settings live INSIDE the work area (a `SettingsStrip embedded` above the editor / page grid). `ToolWorkspace` has no settings slot; only `options` (PdfPageOptions, one setting per row on every screen) and `action`.
 - Text to PDF passes the editor's HTML to `buildTextPdf(html, opts, 'html')`. Use `RichToolbar` buttons (never steal focus: `onMouseDown preventDefault`). Plain/Markdown files are converted to HTML with `lib/pdf/rich-html.ts`.
 - Site settings (name, url, SEO defaults, robots, verification) are only in `config/site.ts`; schema.org builders in `lib/seo/schema.ts`.
+
+
+## Blog
+
+- Posts are markdown in `web/src/content/blog/<lang>/`. Frontmatter: `title` (H1), `seoTitle` (<=60), `description` (<=155), `lang`, `translationKey`, `date`, `keywords`, `tool` (slug, shows a Try-it box and a link from the tool page).
+- FAQ at the end of a post: one line per question, `**Question?** Answer`. These lines also become FAQPage schema.
+- Link to tools with relative paths (`/jpg-to-pdf/`), never a full domain.
+- Per-language texts of the blog (title, description, path) are in `config/site.ts` (`SITE.blog`).
+- After adding the first content collection, restart `astro dev`.
