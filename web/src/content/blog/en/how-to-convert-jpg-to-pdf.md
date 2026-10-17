@@ -23,6 +23,8 @@ We'll use a free [JPG to PDF tool](/jpg-to-pdf/). The best part is that your pho
 
 Open the [JPG to PDF tool](/jpg-to-pdf/) and click **Choose photos**. You can also drag your photos into the box. You can pick one photo or many at once.
 
+<figure class="shot"><img src="/blog/jpg-to-pdf/desktop-1-choose-photos.webp" alt="Step 1: Click Choose photos on the JPG to PDF tool (desktop)" width="1350" height="700" loading="lazy" decoding="async" /></figure>
+
 ### Step 2: Put them in order and choose your settings
 
 Your photos now show up with numbers on them. The number tells you which page it will be. Want to change the order? Just drag a photo to a new spot.
@@ -35,19 +37,31 @@ On the right side, you'll see a few simple settings:
 - **Orientation:** Portrait means standing up. Landscape means lying sideways.
 - **Margin:** This is the white space around your photo. Small works well for most people.
 
+<figure class="shot"><img src="/blog/jpg-to-pdf/desktop-2-order-and-options.webp" alt="Step 2: Arrange photos and choose page size, orientation and margin (desktop)" width="1350" height="841" loading="lazy" decoding="async" /></figure>
+
 ### Step 3: Convert and download
 
 Click **Convert to PDF** and wait a few seconds. When you see "Your PDF is ready", click **Download PDF**. That's it, your PDF is saved.
+
+<figure class="shot"><img src="/blog/jpg-to-pdf/desktop-3-download-pdf.webp" alt="Step 3: Your PDF is ready, click Download PDF (desktop)" width="1350" height="700" loading="lazy" decoding="async" /></figure>
 
 ### How to do it on your phone
 
 The steps are the same on a phone. Open the tool in Chrome or Safari and tap **Choose photos**. Then pick photos from your gallery, or take a new one with your camera.
 
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-1-choose-photos.webp" alt="Mobile step 1: Tap Choose photos" width="379" height="841" loading="lazy" decoding="async" /></figure>
+
 To change the order, press and hold a photo, then drag it. You can also tap the number on a photo to move it.
+
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-2-arrange-photos.webp" alt="Mobile step 2: Arrange your photos" width="379" height="841" loading="lazy" decoding="async" /></figure>
 
 Scroll down a little. Choose your page size and margin, then tap **Convert to PDF**.
 
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-3-page-options.webp" alt="Mobile step 3: Set page options and tap Convert to PDF" width="379" height="841" loading="lazy" decoding="async" /></figure>
+
 Now tap **Download PDF**. The file will be saved on your phone.
+
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-4-download-pdf.webp" alt="Mobile step 4: Tap Download PDF" width="379" height="841" loading="lazy" decoding="async" /></figure>
 
 ## Tips to get a clear PDF
 

@@ -23,6 +23,8 @@ tool: jpg-to-pdf
 
 [JPG to PDF टूल](/jpg-to-pdf/) खोलें और **Choose photos** पर क्लिक करें। आप फोटो को खींचकर बॉक्स में भी डाल सकते हैं। एक फोटो चुनें या एक साथ कई फोटो, दोनों हो सकता है।
 
+<figure class="shot"><img src="/blog/jpg-to-pdf/desktop-1-choose-photos.webp" alt="स्टेप 1: JPG to PDF टूल में Choose photos पर क्लिक करें (डेस्कटॉप)" width="1350" height="700" loading="lazy" decoding="async" /></figure>
+
 ### स्टेप 2: फोटो का क्रम सेट करें और सेटिंग चुनें
 
 अब आपकी फोटो नंबर के साथ दिखेंगी। नंबर बताता है कि वह फोटो PDF का कौन सा पेज बनेगी। क्रम बदलना है? बस फोटो को खींचकर नई जगह पर रख दें।
@@ -35,19 +37,31 @@ tool: jpg-to-pdf
 - **Orientation:** Portrait यानी खड़ा पेज, Landscape यानी लेटा हुआ पेज।
 - **Margin:** फोटो के चारों ओर की खाली जगह। ज्यादातर लोगों के लिए Small सही रहता है।
 
+<figure class="shot"><img src="/blog/jpg-to-pdf/desktop-2-order-and-options.webp" alt="स्टेप 2: फोटो का क्रम और पेज साइज, ओरिएंटेशन, मार्जिन चुनें (डेस्कटॉप)" width="1350" height="841" loading="lazy" decoding="async" /></figure>
+
 ### स्टेप 3: कन्वर्ट करें और डाउनलोड करें
 
 **Convert to PDF** पर क्लिक करें और कुछ सेकंड रुकें। जब "Your PDF is ready" दिखे, तो **Download PDF** पर क्लिक करें। बस, आपकी PDF सेव हो गई।
+
+<figure class="shot"><img src="/blog/jpg-to-pdf/desktop-3-download-pdf.webp" alt="स्टेप 3: PDF तैयार है, Download PDF पर क्लिक करें (डेस्कटॉप)" width="1350" height="700" loading="lazy" decoding="async" /></figure>
 
 ### मोबाइल पर कैसे करें
 
 मोबाइल पर भी यही स्टेप हैं। Chrome या Safari में टूल खोलें और **Choose photos** पर टैप करें। फिर गैलरी से फोटो चुनें या कैमरे से नई फोटो लें।
 
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-1-choose-photos.webp" alt="मोबाइल स्टेप 1: Choose photos पर टैप करें" width="379" height="841" loading="lazy" decoding="async" /></figure>
+
 क्रम बदलने के लिए फोटो को दबाकर रखें और खींचें। आप फोटो पर बने नंबर पर टैप करके भी उसे आगे-पीछे कर सकते हैं।
+
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-2-arrange-photos.webp" alt="मोबाइल स्टेप 2: फोटो का क्रम सेट करें" width="379" height="841" loading="lazy" decoding="async" /></figure>
 
 थोड़ा नीचे स्क्रॉल करें। पेज साइज और मार्जिन चुनें, फिर **Convert to PDF** पर टैप करें।
 
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-3-page-options.webp" alt="मोबाइल स्टेप 3: पेज सेटिंग चुनें और Convert to PDF पर टैप करें" width="379" height="841" loading="lazy" decoding="async" /></figure>
+
 अब **Download PDF** पर टैप करें। फाइल आपके फोन में सेव हो जाएगी।
+
+<figure class="shot shot-m"><img src="/blog/jpg-to-pdf/mobile-4-download-pdf.webp" alt="मोबाइल स्टेप 4: Download PDF पर टैप करें" width="379" height="841" loading="lazy" decoding="async" /></figure>
 
 ## साफ PDF के लिए कुछ टिप्स
 

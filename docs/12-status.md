@@ -75,7 +75,7 @@ Last updated: 17 Oct 2026
 - Pages: `/blog/` + `/blog/<slug>/` (English), `/hi/blog/` + `/hi/blog/<slug>/` (Hindi), RSS at `/blog/rss.xml` and `/hi/blog/rss.xml`. Header + footer have Blog links; the tool page lists its guides (frontmatter `tool: jpg-to-pdf`).
 - Post SEO: own `seoTitle` + `description`, canonical, hreflang between the English and Hindi version (same `translationKey`), `lang` on `<html>`, og:locale (+alternate), article:* meta, BlogPosting + BreadcrumbList + FAQPage (built from the "**Question?** answer" lines) schema, table of contents, reading time, relative links to the tools, RSS autodiscovery, sitemap entries.
 - Published: "How to Convert JPG to PDF Quickly" (en) and "JPG को PDF में कैसे बदलें?" (hi).
-- TODO: the screenshots of the posts (7 places, listed in the drafts as `[image: ...]`) are not added yet; put images in `web/public/blog/` and reference them in the markdown. Hindi tool pages and a Hindi header/footer do not exist yet.
+- Screenshots: the 7 images from `docs/post/jpg-to-pdf-screenshots/` are converted to WebP in `web/public/blog/jpg-to-pdf/` and placed in both posts as `<figure class="shot">` (width/height set, lazy). Originals stay in docs. Hindi tool pages and a Hindi header/footer do not exist yet.
 - Add a post: copy a file in `content/blog/en/`, change the frontmatter; for the translation use the same `translationKey` in `content/blog/hi/`.
 
 ## Result card (done)
