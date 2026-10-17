@@ -5,7 +5,7 @@ description: "सिर्फ 4 आसान स्टेप में टेक
 lang: hi
 translationKey: text-to-pdf
 date: 2026-10-17
-author: Lalit Panwar
+author: Abhishek Sahu
 keywords: ["टेक्स्ट को PDF में कैसे बदलें", "हिंदी टेक्स्ट को PDF में बदलें", "txt को PDF कैसे बनाएं", "नोट्स की PDF कैसे बनाएं"]
 tool: text-to-pdf
 ---

@@ -20,7 +20,7 @@ const blog = defineCollection({
     translationKey: z.string(),
     date: z.coerce.date(),
     updated: z.coerce.date().optional(),
-    author: z.string().default('Lalit Panwar'),
+    author: z.string().default('Abhishek Sahu'),
     keywords: z.array(z.string()).default([]),
     /** slug of the tool this post is about (shows a "Try it" box and links to it) */
     tool: z.string().optional(),

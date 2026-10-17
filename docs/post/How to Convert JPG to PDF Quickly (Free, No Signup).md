@@ -1,6 +1,6 @@
 # How to Convert JPG to PDF Quickly (Free, No Signup)
 
-Oct 17, 2026 · @Lalit Panwar
+Oct 17, 2026 · @Abhishek Sahu
 
 Need to turn a photo into a PDF? It takes less than a minute. You pick your photos, put them in order, and download one PDF. You don't need an app or an account.
 

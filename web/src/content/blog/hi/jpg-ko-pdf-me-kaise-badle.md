@@ -5,7 +5,7 @@ description: "सिर्फ 3 आसान स्टेप में फोट
 lang: hi
 translationKey: jpg-to-pdf
 date: 2026-10-17
-author: Lalit Panwar
+author: Abhishek Sahu
 keywords: ["JPG को PDF में कैसे बदलें", "फोटो को PDF कैसे बनाएं", "मोबाइल से JPG to PDF", "कई फोटो की एक PDF"]
 tool: jpg-to-pdf
 ---

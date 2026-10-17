@@ -5,7 +5,7 @@ description: "Turn text into a neat PDF in 4 easy steps. Add headings, bold text
 lang: en
 translationKey: text-to-pdf
 date: 2026-10-17
-author: Lalit Panwar
+author: Abhishek Sahu
 keywords: ["convert text to pdf", "text to pdf online", "txt to pdf", "notes to pdf", "hindi text to pdf"]
 tool: text-to-pdf
 ---

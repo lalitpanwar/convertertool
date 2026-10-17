@@ -1,6 +1,6 @@
 # How to Convert Text to PDF (Free, No Signup)
 
-Oct 17, 2026 · @Lalit Panwar
+Oct 17, 2026 · @Abhishek Sahu
 
 Want to turn your notes, a letter or a simple list into a neat PDF? You can do it in about a minute. Just type or paste your text, make it look nice, and download the PDF. No app, no sign-up.
 

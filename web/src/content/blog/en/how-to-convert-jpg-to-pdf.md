@@ -5,7 +5,7 @@ description: "Convert JPG to PDF in 3 easy steps on phone or PC. Free, no signup
 lang: en
 translationKey: jpg-to-pdf
 date: 2026-10-17
-author: Lalit Panwar
+author: Abhishek Sahu
 keywords: ["convert jpg to pdf", "jpg to pdf on phone", "combine jpg into one pdf", "photo to pdf for form upload"]
 tool: jpg-to-pdf
 ---
