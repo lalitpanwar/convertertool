@@ -1,0 +1,87 @@
+---
+import InfoPage from '@/components/content/InfoPage.astro';
+import TrustPoints from '@/components/content/TrustPoints.astro';
+import { SITE } from '@/config/site';
+import { liveTools } from '@/lib/tools/registry';
+
+const tools = liveTools();
+---
+
+<InfoPage
+  title="How your files stay private"
+  seoTitle={`Is It Safe? How Your Files Stay Private | ${SITE.name}`}
+  description="Your photos and PDFs are processed inside your browser and never uploaded. See how it works and how you can check it yourself in one minute."
+  path="/security/"
+  intro="Most online PDF sites ask you to upload your file to their server. We do not. Here is how that works, and how you can check it yourself."
+>
+  <div class="post">
+    <h2 id="how">How it works</h2>
+    <ol>
+      <li><strong>You choose a file.</strong> It is opened by your browser, on your own phone or computer.</li>
+      <li><strong>Your browser does the work.</strong> The conversion code runs on your device, like a small app inside the page.</li>
+      <li><strong>You download the result.</strong> It is saved straight from your browser. Nothing travelled to a server and back.</li>
+    </ol>
+  </div>
+
+  <TrustPoints
+    points={[
+      { title: 'No upload', text: 'Your file never leaves your device while you use a tool.' },
+      { title: 'No copy on our side', text: 'We have no storage for your files, so there is nothing to keep, leak or sell.' },
+      { title: 'No sign-up', text: 'No account, no email, no phone number.' },
+      { title: 'Short-lived draft', text: 'If you refresh by mistake we bring your work back from your own browser. It is deleted after 15 minutes, or about a minute after you download.' },
+    ]}
+  />
+
+  <div class="post">
+    <h2 id="check">Do not just trust us: check it yourself</h2>
+    <p>It takes one minute, and works on a computer:</p>
+    <ol>
+      <li>Open any tool, for example <a href="/jpg-to-pdf/">JPG to PDF</a>.</li>
+      <li>Press <strong>F12</strong> (or right-click, then <strong>Inspect</strong>) and open the <strong>Network</strong> tab.</li>
+      <li>Choose a photo and tap <strong>Convert</strong>.</li>
+      <li>Look at the list: you will see the page's own files loading, but <strong>no request that carries your photo</strong>. Your file is not in any upload.</li>
+    </ol>
+    <p>Your result is created inside the browser, which is why the tools work the same for a private document as for any other file.</p>
+
+    <h2 id="tools">What happens to your file in each tool</h2>
+  </div>
+
+  <div class="overflow-x-auto rounded-card border border-border bg-surface">
+    <table class="w-full min-w-[32rem] text-left text-sm">
+      <thead class="bg-surface-2 text-muted">
+        <tr>
+          <th class="p-3 font-semibold">Tool</th>
+          <th class="p-3 font-semibold">Where it is processed</th>
+          <th class="p-3 font-semibold">Uploaded?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          tools.map((t) => (
+            <tr class="border-t border-border">
+              <td class="p-3"><a class="text-link underline-offset-4 hover:underline" href={`/${t.slug}/`}>{t.name}</a></td>
+              <td class="p-3">In your browser</td>
+              <td class="p-3 font-medium text-success">No</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="post">
+    <h2 id="tips">Good habits for sensitive documents</h2>
+    <ul>
+      <li>Use a device and browser you trust, and close the tab when you are done.</li>
+      <li>On a shared computer, use "Remove all" or "Start fresh" before you leave, and download only to a folder you control.</li>
+      <li>Do not put passwords or private details in a file name you plan to share.</li>
+    </ul>
+
+    <h2 id="future">If we ever need a server</h2>
+    <p>Some conversions, such as Word to PDF, cannot be done inside a browser. If we add such a tool, we will say so clearly on that tool's page <em>before</em> you choose a file, so you can decide. All the tools listed above work in your browser.</p>
+
+    <p>
+      Read the full <a href="/privacy/">Privacy Policy</a> or the <a href="/terms/">Terms of Use</a>.
+    </p>
+  </div>
+</InfoPage>

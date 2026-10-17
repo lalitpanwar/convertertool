@@ -5,6 +5,7 @@ import { TOOLS } from '@/lib/tools/registry';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { liveTools } from '@/lib/tools/registry';
 import { toolListSchema, webPageSchema } from '@/lib/seo/schema';
+import TrustPoints from '@/components/content/TrustPoints.astro';
 import { SITE } from '@/config/site';
 
 const title = `${SITE.name}: Free PDF Tools, Fast and Private`;
@@ -27,6 +28,24 @@ const description = SITE.defaultDescription;
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {TOOLS.map((t) => <ToolCard tool={t} />)}
       </div>
+    </section>
+
+    <section class="mt-12" aria-label="Privacy">
+      <h2 class="text-center text-2xl font-bold">Your files stay yours</h2>
+      <div class="mt-5">
+        <TrustPoints
+          points={[
+            { title: 'Never uploaded', text: 'Every tool runs inside your browser, on your own device.' },
+            { title: 'Not stored, not shared', text: 'We do not keep your files and we do not share them with anyone.' },
+            { title: 'No sign-up', text: 'No account, email or phone number needed.' },
+            { title: 'You can check it', text: 'See in one minute that nothing is uploaded.' },
+          ]}
+        />
+      </div>
+      <p class="mt-4 text-center text-sm">
+        <a href="/security/" class="text-link underline-offset-4 hover:underline">How your files stay private</a> ·
+        <a href="/privacy/" class="text-link underline-offset-4 hover:underline">Privacy Policy</a>
+      </p>
     </section>
   </div>
 </BaseLayout>

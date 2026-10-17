@@ -69,6 +69,13 @@ Last updated: 17 Oct 2026
 7. [ ] Lighthouse CI, Cloudflare Pages deploy
 8. [ ] Wave 2: Word to PDF, PDF to Word (server, docs/04)
 
+## Privacy and trust pages (done)
+
+- `/privacy/` (Privacy Policy), `/security/` (How your files stay private: how it works, how to verify in the Network tab, per-tool table), `/terms/` (Terms of Use). Built with `components/content/InfoPage.astro` + `TrustPoints.astro`. In the footer, on the home page (trust section) and under every tool ("Nothing is uploaded or saved on our servers. Is it safe? See how").
+- The text only claims what the code does: files processed in the browser, no upload, no accounts; draft kept in IndexedDB only, removed 15 min after the last change or about a minute after Download; hosting (Cloudflare) sees normal request logs; no cookies/analytics/ads yet. When analytics or ads are added, UPDATE /privacy/ first and change `SITE.legalUpdated`.
+- OWNER TODO: set `SITE.contactEmail` in `config/site.ts` (pages say "contact option coming soon" until then); have the policy read by a lawyer before running ads; if a server tool (Word to PDF) is added, add its own notice (what is uploaded, how long it is kept).
+- Blog post: date/author/reading time now sit directly under the title.
+
 ## Blog (done)
 
 - Posts: `web/src/content/blog/<en|hi>/<slug>.md` (Astro content collection, schema in `web/src/content.config.ts`). Source drafts stay in `docs/post/`.

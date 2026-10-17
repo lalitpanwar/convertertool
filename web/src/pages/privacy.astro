@@ -1,0 +1,70 @@
+---
+import InfoPage from '@/components/content/InfoPage.astro';
+import TrustPoints from '@/components/content/TrustPoints.astro';
+import { SITE } from '@/config/site';
+---
+
+<InfoPage
+  title="Privacy Policy"
+  seoTitle={`Privacy Policy: Your Files Stay on Your Device | ${SITE.name}`}
+  description="We do not upload, store, sell or share your files. Every tool runs in your browser. Read exactly what stays on your device and what we collect."
+  path="/privacy/"
+  intro="Short version: your files stay on your device. We do not upload them, we do not keep them, and we do not share them with anyone."
+  updated
+>
+  <TrustPoints
+    points={[
+      { title: 'Your files are never uploaded', text: 'Photos, PDFs and text are processed inside your own browser. They are not sent to our servers.' },
+      { title: 'We do not store your files', text: 'There is no file storage on our side, so there is nothing to leak, lose or sell.' },
+      { title: 'We do not share your data', text: 'No one receives your files or your text, because we never have them.' },
+      { title: 'No account, no sign-up', text: 'You do not give us a name, email or phone number to use any tool.' },
+    ]}
+  />
+
+  <div class="post">
+    <h2 id="files">Your files and text</h2>
+    <p>
+      When you choose a photo, a PDF or type text in one of our tools, the work is done by code running in your browser, on your phone or computer. The file is read by your browser, the result is created there, and you download it from there. <strong>Your file is not sent over the internet to us or to anyone else.</strong>
+    </p>
+    <p>
+      You can check this yourself: open your browser's developer tools, look at the Network tab while you convert a file, and you will see that no file is uploaded. We explain how in <a href="/security/">How your files stay private</a>.
+    </p>
+
+    <h2 id="draft">What is saved in your own browser</h2>
+    <p>If you refresh the page by mistake, you should not lose your work. For that, a tool saves a draft <strong>in your own browser only</strong> (in a storage area called IndexedDB). It never leaves your device.</p>
+    <ul>
+      <li>The draft is removed automatically <strong>15 minutes after your last change</strong>.</li>
+      <li>After you tap Download, the saved draft is removed within about a minute.</li>
+      <li>You can remove it at any time with "Remove all", "Clear" or "Start fresh", or by clearing your browser's site data.</li>
+      <li>We also remember small choices on your device, such as Thumbnails or List view. They contain no personal information.</li>
+    </ul>
+
+    <h2 id="collect">What we do receive</h2>
+    <p>
+      Like every website, our hosting provider (Cloudflare) receives basic technical information when you open a page: your IP address, the page you asked for, your browser type and the time. This is used to deliver the page, keep the site safe and prevent abuse. It does not include your files or your text.
+    </p>
+
+    <h2 id="cookies">Cookies, analytics and ads</h2>
+    <p>
+      Right now this site does not use tracking cookies, analytics or advertising, and it does not ask you to accept cookies. If we add privacy-friendly visitor statistics or ads in the future, we will update this page first, say exactly what is collected and by whom, and change the date at the top.
+    </p>
+
+    <h2 id="sharing">Sharing and selling</h2>
+    <p>We do not sell your data. We do not share your files or text, because we do not have them. We only share technical information if the law requires it.</p>
+
+    <h2 id="links">Links to other websites</h2>
+    <p>Some pages may link to other websites. We are not responsible for their privacy practices, so please read their policies.</p>
+
+    <h2 id="children">Children</h2>
+    <p>The tools do not ask for personal information, so children can use them without giving us any. We do not knowingly collect personal information from anyone.</p>
+
+    <h2 id="changes">Changes to this policy</h2>
+    <p>If we change how things work, we will update this page and the "Last updated" date. We will never start collecting your files without clearly telling you first.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>
+      Questions about privacy?
+      {SITE.contactEmail ? <>Write to <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.</> : <>A contact option will be added here soon.</>}
+    </p>
+  </div>
+</InfoPage>

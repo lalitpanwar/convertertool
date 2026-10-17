@@ -1,0 +1,46 @@
+---
+import InfoPage from '@/components/content/InfoPage.astro';
+import { SITE } from '@/config/site';
+---
+
+<InfoPage
+  title="Terms of Use"
+  seoTitle={`Terms of Use | ${SITE.name}`}
+  description="Simple terms for using our free PDF tools: your files stay yours, the tools are provided as they are, and how to use the site fairly."
+  path="/terms/"
+  intro="Plain rules for using this website. By using it you agree to them."
+  updated
+>
+  <div class="post">
+    <h2 id="service">The service</h2>
+    <p>{SITE.name} offers free online tools to work with PDF files and images. The tools run in your browser. We may change, improve or remove a tool at any time.</p>
+
+    <h2 id="yours">Your files stay yours</h2>
+    <p>You keep all rights to the files and text you use. We do not upload, store, claim or share them (see the <a href="/privacy/">Privacy Policy</a>). You are responsible for having the right to use and convert the files you choose.</p>
+
+    <h2 id="use">Fair use</h2>
+    <ul>
+      <li>Do not use the site to break the law or to harm others.</li>
+      <li>Do not try to disturb, overload or attack the site.</li>
+      <li>Do not copy the site's text, design or code to pass it off as your own.</li>
+    </ul>
+
+    <h2 id="asis">No guarantee</h2>
+    <p>The tools are provided "as is". We work hard to make them reliable, but we cannot promise they will always be available or error-free. Please <strong>keep your original files</strong> and check the result before you use it for something important, such as a form or exam submission.</p>
+
+    <h2 id="liability">Limit of responsibility</h2>
+    <p>To the extent the law allows, we are not responsible for loss or damage that comes from using, or not being able to use, the site or its results.</p>
+
+    <h2 id="links">Links</h2>
+    <p>We may link to other websites. We do not control them and are not responsible for them.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>We may update these terms. The date at the top shows the latest version. If you keep using the site after a change, you accept the new terms.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>
+      Questions?
+      {SITE.contactEmail ? <>Write to <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.</> : <>A contact option will be added here soon.</>}
+    </p>
+  </div>
+</InfoPage>

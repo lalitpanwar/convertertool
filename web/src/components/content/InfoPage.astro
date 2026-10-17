@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { SITE } from '@/config/site';
+import { breadcrumbSchema, webPageSchema } from '@/lib/seo/schema';
+
+/** Layout of the static information pages (privacy, security, terms): title, intro, readable text. */
+interface Props {
+  title: string;
+  /** <title>, <= 60 chars */
+  seoTitle: string;
+  /** meta description, <= 155 chars */
+  description: string;
+  path: string;
+  /** short line under the title */
+  intro: string;
+  /** show "Last updated" (legal pages) */
+  updated?: boolean;
+}
+const { title, seoTitle, description, path, intro, updated = false } = Astro.props;
+const date = new Date(SITE.legalUpdated + 'T00:00:00Z');
+const nice = date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+
+<BaseLayout title={seoTitle} description={description} path={path} crumbs={[{ name: 'Home', href: '/' }, { name: title }]}>
+  <JsonLd slot="head" data={[webPageSchema({ path, name: seoTitle, description }), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: title, path }])]} />
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:py-14">
+    <h1 class="text-3xl font-bold leading-tight sm:text-4xl">{title}</h1>
+    <p class="mt-3 text-lg text-muted">{intro}</p>
+    {updated && <p class="mt-2 text-sm text-muted">Last updated: <time datetime={SITE.legalUpdated}>{nice}</time></p>}
+    <div class="mt-8 grid gap-8">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

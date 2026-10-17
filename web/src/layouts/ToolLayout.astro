@@ -38,7 +38,11 @@ const guides = [...(await postsFor('en')), ...(await postsFor('hi'))].filter((p)
     <section class="mt-8 rounded-card border border-border bg-surface p-4 shadow-sm sm:p-6" aria-label={tool.name}>
       {tool.island && <ToolIsland island={tool.island} noun={tool.fileNoun} draftKey={tool.slug} />}
     </section>
-    <p class="mt-3 text-center text-sm text-muted">{SITE.privacyLine}</p>
+    <p class="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-sm text-muted">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-success" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 018 0v3" /></svg>
+      <span>{SITE.privacyLine} Nothing is uploaded or saved on our servers.</span>
+      <a href="/security/" class="text-link underline-offset-4 hover:underline">Is it safe? See how</a>
+    </p>
 
     <div class="mx-auto mt-12 grid max-w-6xl gap-12">
       <Steps steps={tool.steps} />

@@ -8,6 +8,10 @@ export const SITE = {
   url: 'https://example.com',
   tagline: 'Free PDF tools. Fast, private, no signup.',
   privacyLine: 'Your files never leave your device.',
+  /** shown on the privacy / terms pages (leave '' until you have one: the pages then say "contact form coming soon") */
+  contactEmail: '',
+  /** "last updated" date of the privacy policy and terms (change it whenever you edit them) */
+  legalUpdated: '2026-10-17',
   defaultLocale: 'en',
   locales: ['en', 'hi'] as const, // blog posts exist in both; tool pages are English for now (docs/10, docs/11)
   /** og:locale per language */
