@@ -69,6 +69,12 @@ Last updated: 17 Oct 2026
 7. [ ] Lighthouse CI, Cloudflare Pages deploy
 8. [ ] Wave 2: Word to PDF, PDF to Word (server, docs/04)
 
+## Result card (done)
+
+- After the user taps Download the button becomes "Downloaded" (green check, quiet style, tap again to re-download).
+- `ResultCard` has an optional `onBack` + `backLabel` link next to the main `onReset` link. Text to PDF shows "Edit your text again" (keeps the text) and "Create another PDF" (empty document, draft cleared).
+- Fixed: after "Edit your text again" the editor came back empty (it is unmounted while the result shows); it now refills from state.
+
 ## Merge PDF redesign (done)
 
 - Same UX as JPG to PDF: first-page preview of every PDF (pdf.js, drawn one at a time), page count per file and in total, Thumbnails/List toggle (phones start in List), A to Z / Z to A, Remove all, drag (long-press on touch) or tap the number to move, duplicate popup, "New"/"Moved" highlights, password/unreadable PDFs marked red and blocking Merge.

@@ -150,6 +150,15 @@ export default function TextToPdfTool({ draftKey = 'text-to-pdf' }: { draftKey?:
     setError('');
   };
 
+  // The editor is removed while the result is shown; when it comes back, put the text back in it.
+  useEffect(() => {
+    const el = editorRef.current;
+    if (phase !== 'edit' || !el) return;
+    const want = html || '<p><br></p>';
+    if (el.innerHTML !== want) el.innerHTML = want;
+    el.classList.toggle('is-empty', !plain.trim() && !el.querySelector('li,hr'));
+  }, [phase]);
+
   // ---------- never lose the text on a refresh
   useEffect(() => {
     if (editorRef.current && !editorRef.current.innerHTML) {
@@ -296,6 +305,19 @@ export default function TextToPdfTool({ draftKey = 'text-to-pdf' }: { draftKey?:
     }
   };
 
+  /** a fresh, empty document (the editor is rebuilt empty when it comes back) */
+  const startNew = () => {
+    if (result) URL.revokeObjectURL(result.url);
+    setResult(null);
+    setHtml('');
+    setPlain('');
+    setOpts((o) => ({ ...o, title: '' }));
+    setRestored(false);
+    setError('');
+    void clearDraft(draftKey);
+    setPhase('edit');
+  };
+
   const backToEditing = () => {
     if (result) URL.revokeObjectURL(result.url);
     setResult(null);
@@ -313,8 +335,10 @@ export default function TextToPdfTool({ draftKey = 'text-to-pdf' }: { draftKey?:
           size={result.size}
           detail={`${result.pages} ${result.pages === 1 ? 'page' : 'pages'}`}
           note={result.replaced > 0 ? `${result.replaced} character${result.replaced === 1 ? '' : 's'} that the fonts cannot draw (like emoji) became "?".` : undefined}
-          onReset={backToEditing}
-          resetLabel="Edit your text again"
+          onBack={backToEditing}
+          backLabel="Edit your text again"
+          onReset={startNew}
+          resetLabel="Create another PDF"
           onDownload={onDownloaded}
           afterDownload="For your privacy, your saved files are removed from this browser within a minute."
         />

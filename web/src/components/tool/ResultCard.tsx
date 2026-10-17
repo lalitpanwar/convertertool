@@ -8,8 +8,12 @@ interface Props {
   size: number;
   /** extra line, e.g. "5 pages" */
   detail?: string;
+  /** start a new job (clears everything), e.g. "Convert more photos" */
   onReset: () => void;
   resetLabel?: string;
+  /** optional: go back and change the same work (keeps it), e.g. "Edit your text again" */
+  onBack?: () => void;
+  backLabel?: string;
   /** headline, e.g. "Success! Your JPG is ready" */
   title?: string;
   /** download button text, e.g. "Download ZIP" */
@@ -40,6 +44,8 @@ export default function ResultCard({
   detail,
   onReset,
   resetLabel = 'Start over',
+  onBack,
+  backLabel = 'Go back and edit',
   title = 'Success! Your PDF is ready',
   buttonLabel = 'Download PDF',
   note,
@@ -71,21 +77,39 @@ export default function ResultCard({
         href={url}
         download={filename}
         size="xl"
-        class="ripple-pulse mt-6 px-10"
+        variant={downloaded ? 'secondary' : 'primary'}
+        class={`mt-6 gap-2 px-10 ${downloaded ? '' : 'ripple-pulse'}`}
         onClick={() => {
           setDownloaded(true);
           onDownload?.();
         }}
       >
-        {buttonLabel}
+        {downloaded ? (
+          <>
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-success text-white" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.5l4.5 4.5L19 7.5" />
+              </svg>
+            </span>
+            Downloaded
+          </>
+        ) : (
+          buttonLabel
+        )}
       </Button>
+      {downloaded && <p class="mt-2 text-xs text-muted">Tap the button again to download it once more.</p>}
       {note && <p class="mx-auto mt-3 max-w-sm text-xs text-muted">{note}</p>}
       {downloaded && afterDownload && (
         <p class="mx-auto mt-3 max-w-sm text-xs font-medium text-success" role="status">
           {afterDownload}
         </p>
       )}
-      <div class="mt-3">
+      <div class="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+        {onBack && (
+          <Button variant="link" onClick={onBack}>
+            {backLabel}
+          </Button>
+        )}
         <Button variant="link" onClick={onReset}>
           {resetLabel}
         </Button>
