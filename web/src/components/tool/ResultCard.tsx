@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import Button from '@/components/ui/Button';
 import { formatBytes } from '@/lib/utils';
+import { currentTool, track } from '@/lib/analytics';
 
 interface Props {
   url: string;
@@ -61,6 +62,7 @@ export default function ResultCard({
     const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
     el.querySelector<HTMLElement>('a[download]')?.focus({ preventScroll: true });
+    track('tool_success', { tool: currentTool() });
   }, []);
 
   return (
@@ -81,6 +83,7 @@ export default function ResultCard({
         class={`mt-6 gap-2 px-10 ${downloaded ? '' : 'ripple-pulse'}`}
         onClick={() => {
           setDownloaded(true);
+          track('file_download', { tool: currentTool() });
           onDownload?.();
         }}
       >

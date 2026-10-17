@@ -2,6 +2,8 @@
 import '@/styles/global.css';
 import Seo from '@/components/seo/Seo.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
+import Gtm from '@/components/seo/Gtm.astro';
+import GtmNoscript from '@/components/seo/GtmNoscript.astro';
 import { organizationSchema, websiteSchema } from '@/lib/seo/schema';
 import { SITE } from '@/config/site';
 import Header from '@/components/layout/Header.astro';
@@ -33,9 +35,11 @@ const { title, description, path, noindex, lang = SITE.defaultLocale, type, alte
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Seo title={title} description={description} path={path} noindex={noindex} lang={lang} type={type} alternates={alternates} article={article} feed={feed} />
     <JsonLd data={[organizationSchema(), websiteSchema()]} />
+    <Gtm />
     <slot name="head" />
   </head>
   <body>
+    <GtmNoscript />
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded-ctl focus:bg-surface focus:px-3 focus:py-2">Skip to content</a>
     <Header />
     <main id="main">

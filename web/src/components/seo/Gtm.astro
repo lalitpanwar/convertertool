@@ -1,0 +1,36 @@
+---
+import { SITE } from '@/config/site';
+
+/**
+ * Google Tag Manager (head part). Renders nothing until SITE.analytics.gtmId is set.
+ * For speed, the GTM script is loaded on the first touch/scroll/key press, or after 4 seconds
+ * (so it never slows down the first view of a page).
+ */
+const id = SITE.analytics.gtmId;
+const valid = /^GTM-[A-Z0-9]+$/.test(id);
+---
+
+{
+  valid && (
+    <script is:inline define:vars={{ id }}>
+      {`
+      window.dataLayer = window.dataLayer || [];
+      (function () {
+        var loaded = false;
+        function load() {
+          if (loaded) return;
+          loaded = true;
+          ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) { removeEventListener(e, load); });
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=' + id;
+          document.head.appendChild(s);
+        }
+        ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) { addEventListener(e, load, { passive: true, once: true }); });
+        setTimeout(load, 4000);
+      })();
+      `}
+    </script>
+  )
+}

@@ -69,6 +69,13 @@ Last updated: 17 Oct 2026
 7. [ ] Lighthouse CI, Cloudflare Pages deploy
 8. [ ] Wave 2: Word to PDF, PDF to Word (server, docs/04)
 
+## Google Tag Manager (done, switched off until an id is set)
+
+- Put the container id (GTM-XXXXXXX) in `web/src/config/site.ts` -> `SITE.analytics.gtmId`. Empty = nothing is loaded. `components/seo/Gtm.astro` + `GtmNoscript.astro` are in `BaseLayout`, so every page gets it.
+- Speed: the GTM script loads on the first touch/scroll/key press or after 4 s, never in the first paint.
+- Events pushed to `dataLayer` (`lib/analytics.ts`, `track()`): `tool_success` (a result is shown) and `file_download` (Download tapped), both with `tool` = page slug. No file names or content are ever sent.
+- The Privacy Policy changes its cookies/analytics paragraph automatically when the id is set. If you add tags in GTM that use ads or remarketing, update the policy by hand and consider a cookie consent banner.
+
 ## Privacy and trust pages (done)
 
 - `/privacy/` (Privacy Policy), `/security/` (How your files stay private: how it works, how to verify in the Network tab, per-tool table), `/terms/` (Terms of Use). Built with `components/content/InfoPage.astro` + `TrustPoints.astro`. In the footer, on the home page (trust section) and under every tool ("Nothing is uploaded or saved on our servers. Is it safe? See how").

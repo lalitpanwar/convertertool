@@ -40,8 +40,9 @@ export const SITE = {
   twitterHandle: '', // e.g. '@pdfsaathi'
   /** search engine verification tokens (leave '' until you have them) */
   verification: { google: '', bing: '' },
-  /** analytics ids (used in the analytics phase) */
-  analytics: { gaId: '' },
+  /** analytics: paste your Google Tag Manager container id here (looks like GTM-XXXXXXX). Leave '' to switch it off.
+   *  When it is set, the Privacy Policy automatically mentions it. */
+  analytics: { gtmId: '' },
   /** robots.txt */
   robots: {
     /** set false on staging so nothing gets indexed */

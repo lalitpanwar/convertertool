@@ -45,9 +45,20 @@ import { SITE } from '@/config/site';
     </p>
 
     <h2 id="cookies">Cookies, analytics and ads</h2>
-    <p>
-      Right now this site does not use tracking cookies, analytics or advertising, and it does not ask you to accept cookies. If we add privacy-friendly visitor statistics or ads in the future, we will update this page first, say exactly what is collected and by whom, and change the date at the top.
-    </p>
+    {
+      SITE.analytics.gtmId ? (
+        <>
+          <p>
+            We use <strong>Google Tag Manager</strong> to understand, in a general way, how the site is used (for example which pages are opened and how many conversions finish). Google may set cookies or receive technical information such as your IP address and browser type for this. <strong>Your files, your text and their names are never part of this data</strong>, because they never leave your device. This site does not show ads.
+          </p>
+          <p>You can block this in your browser settings or with a tracking blocker, and the tools will still work. If we add ads in the future, we will update this page first.</p>
+        </>
+      ) : (
+        <p>
+          Right now this site does not use tracking cookies, analytics or advertising, and it does not ask you to accept cookies. If we add visitor statistics or ads in the future, we will update this page first, say exactly what is collected and by whom, and change the date at the top.
+        </p>
+      )
+    }
 
     <h2 id="sharing">Sharing and selling</h2>
     <p>We do not sell your data. We do not share your files or text, because we do not have them. We only share technical information if the law requires it.</p>
