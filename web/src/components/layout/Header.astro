@@ -1,5 +1,6 @@
 ---
 import Button from '@/components/ui/Button.astro';
+import ToolsMenu from './ToolsMenu.astro';
 import { SITE } from '@/config/site';
 ---
 
@@ -12,9 +13,9 @@ import { SITE } from '@/config/site';
       </span>
       {SITE.name}
     </a>
-    <nav aria-label="Main">
-      <Button href="/#tools" variant="ghost">All PDF tools</Button>
+    <nav aria-label="Main" class="flex items-center gap-1">
       <Button href="/blog/" variant="ghost">Blog</Button>
+      <ToolsMenu />
     </nav>
   </div>
 </header>

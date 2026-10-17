@@ -69,6 +69,11 @@ Last updated: 17 Oct 2026
 7. [ ] Lighthouse CI, Cloudflare Pages deploy
 8. [ ] Wave 2: Word to PDF, PDF to Word (server, docs/04)
 
+## Tools menu + blog language switch (done)
+
+- Header: dot-grid ("dice") button at the top right opens a sheet with ALL tools (live = links with icons, planned = dimmed "Soon") plus Blog (EN/HI) and the privacy link. `components/layout/ToolsMenu.astro`: native `<dialog>`, ~20 lines of inline script, no framework. Bottom sheet on phones, panel under the button from 640px; closes on Esc, tap outside, X, or choosing a tool. New tools appear automatically (from the registry + `lib/tools/icons.ts`).
+- Blog: `EN | हिं` switch (`components/blog/LangSwitch.astro`) at the top of the blog list and of every post; on a post it goes to the same post in the other language (greyed out if there is no translation). The old "Read in ..." text links were removed.
+
 ## Blog post 2 + schema on every page (done)
 
 - New posts (en + hi): "How to Convert Text to PDF" (`/blog/how-to-convert-text-to-pdf/`, `/hi/blog/text-ko-pdf-me-kaise-badle/`), 10 screenshots in `web/public/blog/text-to-pdf/` (WebP), originals in `docs/post/text-to-pdf-screenshots/`. Markdown tables are styled (`.post table`). The tool page lists them under "Guides".

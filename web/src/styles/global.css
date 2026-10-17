@@ -224,3 +224,14 @@ body {
 .post th, .post td { border: 1px solid var(--border); padding: 0.5em 0.75em; text-align: left; vertical-align: top; }
 .post th { background: var(--surface-2); font-weight: 600; }
 .post tr:nth-child(even) td { background: var(--surface); }
+
+/* "All tools" sheet (header menu): slides up on phones, drops down from the button on larger screens */
+.tools-sheet[open] { animation: sheet-up 180ms ease-out; }
+.tools-sheet { position: fixed; inset: auto 0 0 0; }
+@media (min-width: 640px) {
+  .tools-sheet { inset: 4.25rem 1rem auto auto; }
+  .tools-sheet[open] { animation: sheet-down 150ms ease-out; }
+}
+@keyframes sheet-up { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes sheet-down { from { transform: translateY(-8px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .tools-sheet[open] { animation: none; } }
