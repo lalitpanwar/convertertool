@@ -31,18 +31,18 @@ export const SITE = {
   } as Record<string, { path: string; title: string; heading: string; description: string }>,
   /** schema.org Organization */
   organization: {
-    legalName: 'PDFSaathi',
+    legalName: 'Dear Dice',
     logo: '/favicon.svg',
     email: '',
     /** profile URLs (X, YouTube, GitHub...) -> Organization.sameAs */
     sameAs: [] as string[],
   },
-  twitterHandle: '', // e.g. '@pdfsaathi'
+  twitterHandle: '', // e.g. '@deardice'
   /** search engine verification tokens (leave '' until you have them) */
   verification: { google: '', bing: '' },
   /** analytics: paste your Google Tag Manager container id here (looks like GTM-XXXXXXX). Leave '' to switch it off.
    *  When it is set, the Privacy Policy automatically mentions it. */
-  analytics: { gtmId: '' },
+  analytics: { gtmId: 'GTM-PV6KNGZ9' },
   /** robots.txt */
   robots: {
     /** set false on staging so nothing gets indexed */
