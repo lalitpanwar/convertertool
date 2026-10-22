@@ -23,7 +23,7 @@ export const SITE = {
   ogImageAlt: 'Free PDF tools that run in your browser',
   /** used when a page gives no description of its own */
   defaultDescription:
-    'Convert photos to PDF, turn PDF pages into JPG, merge PDFs and create PDFs from text. Free, no signup, and your files never leave your device.',
+    'Dear Dice - Convert photos to PDF, turn PDF pages into JPG, merge PDFs and create PDFs from text. Free, no signup, and your files never leave your device.',
   /** blog: one set of texts per language (posts live in src/content/blog/<lang>/) */
   blog: {
     en: { path: '/blog/', title: 'Blog', heading: 'PDF guides and tips', description: 'Simple step-by-step guides for everyday PDF problems: photos to PDF, merging files, making files smaller.' },
