@@ -4,8 +4,8 @@
  * and `site` in astro.config.mjs (astro.config.mjs cannot import this file).
  */
 export const SITE = {
-  name: 'PDFSaathi',
-  url: 'https://example.com',
+  name: 'DEAR DICE',
+  url: 'https://www.deardice.com',
   tagline: 'Free PDF tools. Fast, private, no signup.',
   privacyLine: 'Your files never leave your device.',
   /** shown on the privacy / terms pages (leave '' until you have one: the pages then say "contact form coming soon") */
