@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // Keep `site` in sync with src/config/site.ts (url)
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://www.deardice.com',
   trailingSlash: 'ignore',
   integrations: [preact(), sitemap()],
   prefetch: { prefetchAll: false, defaultStrategy: 'hover' },
